@@ -22,6 +22,20 @@ const projects = [
     tech: ['Python', 'TensorFlow', 'Network Analytics'],
     link: '#',
     category: 'Cybersecurity'
+  },
+  {
+    title: 'alx-low_level_programming',
+    description: 'A collection of low-level programming concepts and algorithmic challenges demonstrating strong foundational C and system architecture knowledge.',
+    tech: ['C', 'Linux', 'Algorithms'],
+    link: 'https://github.com/Lawrence-Flash/alx-low_level_programming',
+    category: 'Systems Programming'
+  },
+  {
+    title: 'learning-linux-command-line',
+    description: 'A project dedicated to mastering Linux system administration, scripting, and command-line utilities for efficient workflow automation.',
+    tech: ['Bash', 'Linux', 'Shell Scripting'],
+    link: 'https://github.com/Lawrence-Flash/learning-linux-command-line',
+    category: 'System Administration'
   }
 ];
 
