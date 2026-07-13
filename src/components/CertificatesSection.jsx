@@ -31,6 +31,36 @@ const certificates = [
     name: 'AWS and React Creating FullStack Apps',
     file: 'CertificateOfCompletion_AWS and React Creating FullStack Apps.pdf',
     type: 'FullStack'
+  },
+  {
+    name: 'Linux CentOS 7 Desktops & Remote Access',
+    file: 'CertificateOfCompletion_Linux CentOS 7 Desktops and Remote Access 2016.pdf',
+    type: 'Linux'
+  },
+  {
+    name: 'Red Hat Enterprise Linux 8 Essential Training',
+    file: 'CertificateOfCompletion_Red Hat Enterprise Linux 8 Essential Training.pdf',
+    type: 'Linux'
+  },
+  {
+    name: 'Junior Cybersecurity Analyst Career Path',
+    file: 'Junior_Cybersecurity_Analyst_Career_Path_certificate_lawrencetshabalala253-gmail-com_38912664-ae19-4f65-8d1a-7cf014a4fc77.pdf',
+    type: 'Security'
+  },
+  {
+    name: 'Software Development Fundamentals',
+    file: 'software_dev_fundamentals.pdf',
+    type: 'Development'
+  },
+  {
+    name: 'Systems Administrator',
+    file: 'systems administrator.pdf',
+    type: 'Administration'
+  },
+  {
+    name: 'Data Analyst',
+    file: 'Data Analyst.pdf',
+    type: 'Data'
   }
 ];
 
