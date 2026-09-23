@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="sysGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1912" />
+      <stop offset="50%" stop-color="#0e2a1e" />
+      <stop offset="100%" stop-color="#05120b" />
+    </linearGradient>
+    <linearGradient id="neonGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="240" rx="12" fill="url(#sysGrad)" stroke="rgba(16, 185, 129, 0.25)" stroke-width="1.5"/>
+  <!-- Circuit Grid & Memory Matrix -->
+  <g opacity="0.25" stroke="#10b981" stroke-width="1">
+    <line x1="40" y1="0" x2="40" y2="240" stroke-dasharray="4 6"/>
+    <line x1="120" y1="0" x2="120" y2="240" stroke-dasharray="4 6"/>
+    <line x1="280" y1="0" x2="280" y2="240" stroke-dasharray="4 6"/>
+    <line x1="360" y1="0" x2="360" y2="240" stroke-dasharray="4 6"/>
+    <line x1="0" y1="60" x2="400" y2="60" stroke-dasharray="4 6"/>
+    <line x1="0" y1="180" x2="400" y2="180" stroke-dasharray="4 6"/>
+  </g>
+  <!-- Code & Memory Address Window -->
+  <g transform="translate(60, 45)">
+    <rect width="280" height="150" rx="8" fill="rgba(6, 20, 14, 0.85)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.5"/>
+    <!-- Window Bar -->
+    <path d="M 0,8 A 8 8 0 0 1 8,0 L 272,0 A 8 8 0 0 1 280,8 L 280,24 L 0,24 Z" fill="rgba(16, 185, 129, 0.15)"/>
+    <circle cx="16" cy="12" r="4" fill="#ef4444" />
+    <circle cx="28" cy="12" r="4" fill="#f59e0b" />
+    <circle cx="40" cy="12" r="4" fill="#10b981" />
+    <text x="60" y="16" fill="#a7f3d0" font-family="'Courier New', monospace" font-size="11" font-weight="600">posix_shell.c (x86_64 / C99)</text>
+
+    <!-- Code Snippet -->
+    <text x="18" y="48" fill="#6ee7b7" font-family="'Courier New', monospace" font-size="12">0x7ffd9a: char **tokens = split_line(buf);</text>
+    <text x="18" y="68" fill="#34d399" font-family="'Courier New', monospace" font-size="12">0x7ffdba: pid = fork();</text>
+    <text x="18" y="88" fill="#10b981" font-family="'Courier New', monospace" font-size="12">0x7ffdca: if (pid == 0) execve(path, args);</text>
+    <text x="18" y="108" fill="#059669" font-family="'Courier New', monospace" font-size="12">0x7ffdda: waitpid(pid, &amp;status, 0);</text>
+    <text x="18" y="128" fill="#10b981" font-family="'Courier New', monospace" font-size="12">0x7ffdea: free_heap_ptrs(tokens); /* 0 leaks */</text>
+  </g>
+  <!-- Memory Safe Badge -->
+  <g transform="translate(20, 20)">
+    <rect width="140" height="24" rx="6" fill="rgba(16, 185, 129, 0.12)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1"/>
+    <text x="10" y="16" fill="#34d399" font-family="'Inter', monospace" font-size="11" font-weight="600">VALGRIND CLEAN • C99</text>
+  </g>
+</svg>
