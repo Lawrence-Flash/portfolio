@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%">
+  <rect width="400" height="240" rx="12" fill="#0f172a" stroke="rgba(52, 211, 153, 0.35)" stroke-width="1.5"/>
+  <g transform="translate(24, 22)">
+    <rect width="196" height="24" rx="6" fill="rgba(16, 185, 129, 0.12)" stroke="rgba(52, 211, 153, 0.45)" stroke-width="1"/>
+    <text x="10" y="16" fill="#6ee7b7" font-family="ui-monospace, monospace" font-size="11" font-weight="600">STOKVEL COLLECTIVE</text>
+  </g>
+  <g transform="translate(28, 78)" font-family="ui-monospace, monospace" font-size="14">
+    <text x="0" y="0" fill="#d1fae5">Next.js 14 · Express · Prisma</text>
+    <text x="0" y="32" fill="#6ee7b7">PostgreSQL 16 · Redis 7</text>
+    <text x="0" y="64" fill="#94a3b8">Docker · GitHub Actions CI</text>
+    <text x="0" y="96" fill="#94a3b8">phone OTP · JWT · Zod</text>
+  </g>
+</svg>

@@ -18,64 +18,64 @@ const certificates = [
     issuer: 'LinkedIn Learning'
   },
   {
-    name: 'Automated Threat Detection & SOC Solutions (Splunk, TheHive, Snort)',
+    name: 'Automated Threat Detection: Building SOC Solutions with Splunk, TheHive, and Snort',
     file: 'CertificateOfCompletion_Automated Threat Detection Building SOC Solutions with Splunk TheHive and Snort.pdf',
     type: 'Security',
-    issuer: 'Infosec / LinkedIn'
+    issuer: 'LinkedIn Learning'
   },
   {
     name: 'Container Security by InfoSec',
     file: 'CertificateOfCompletion_Container Security by InfoSec.pdf',
     type: 'Security',
-    issuer: 'InfoSec'
+    issuer: 'LinkedIn Learning'
   },
   {
-    name: 'Junior Cybersecurity Analyst Career Path',
+    name: 'Cybersecurity Essentials',
     file: 'Junior_Cybersecurity_Analyst_Career_Path_certificate_lawrencetshabalala253-gmail-com_38912664-ae19-4f65-8d1a-7cf014a4fc77.pdf',
     type: 'Security',
-    issuer: 'Cisco / SkillsForLife'
+    issuer: 'Cisco Networking Academy (Digital Youth ICT Academy)'
   },
   {
-    name: 'DevOps Practices & Principles',
+    name: 'DevOps Practices & Principles (course)',
     file: 'DevOps Practices Principles certificate.pdf',
     type: 'DevOps',
-    issuer: 'Professional DevOps Institute'
+    issuer: 'Mzansi Digital Learning'
   },
   {
-    name: 'AWS and React Creating FullStack Apps',
+    name: 'AWS and React: Creating Full-Stack Apps',
     file: 'CertificateOfCompletion_AWS and React Creating FullStack Apps.pdf',
     type: 'FullStack',
-    issuer: 'AWS / Cloud Training'
+    issuer: 'LinkedIn Learning'
   },
   {
     name: 'Red Hat Enterprise Linux 8 Essential Training',
     file: 'CertificateOfCompletion_Red Hat Enterprise Linux 8 Essential Training.pdf',
     type: 'Linux',
-    issuer: 'Red Hat / Enterprise Linux'
+    issuer: 'LinkedIn Learning'
   },
   {
-    name: 'Linux CentOS 7 Desktops & Remote Access',
+    name: 'Linux CentOS 7: Desktops and Remote Access (2016)',
     file: 'CertificateOfCompletion_Linux CentOS 7 Desktops and Remote Access 2016.pdf',
     type: 'Linux',
-    issuer: 'Linux Systems'
+    issuer: 'LinkedIn Learning'
   },
   {
-    name: 'Software Development Fundamentals',
+    name: 'Software Development Fundamentals (course)',
     file: 'software_dev_fundamentals.pdf',
     type: 'Development',
-    issuer: 'Software Engineering Council'
+    issuer: 'Mzansi Digital Learning'
   },
   {
-    name: 'Systems Administrator Certification',
+    name: 'Systems Administrator (course)',
     file: 'systems administrator.pdf',
     type: 'Administration',
-    issuer: 'Systems Operations'
+    issuer: 'Mzansi Digital Learning'
   },
   {
-    name: 'Data Analyst Professional',
+    name: 'Data Analyst (course)',
     file: 'Data Analyst.pdf',
     type: 'Data',
-    issuer: 'Analytics Institute'
+    issuer: 'Mzansi Digital Learning'
   }
 ];
 
@@ -105,8 +105,8 @@ const CertificatesSection = () => {
           <div className="section-eyebrow">Professional Accreditations</div>
           <h2 className="section-title">Certifications &amp; Achievements</h2>
           <p className="section-subtitle">
-            Demonstrating industry-tested proficiency in ethical hacking, incident response, 
-            container security, enterprise Linux, and cloud DevOps.
+            CompTIA Security+ (ce) is the exam certificate. The other cards are course
+            completions. The issuer on each card matches the text inside that PDF.
           </p>
         </div>
 

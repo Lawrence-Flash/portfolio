@@ -1,16 +1,31 @@
-# React + Vite
+# Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal site for Sphamandla Lawrence Tshabalala, a junior DevSecOps engineer and cybersecurity analyst in South Africa. Project cards link to public GitHub repositories and describe only what those repositories contain.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19
+- Vite 8
+- Oxlint
 
-## React Compiler
+`vite.config.js` sets the production base path to `/portfolio/`, which matches a GitHub Pages project site.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Run locally
 
-## Expanding the Oxlint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Checks
+
+```bash
+npm run lint
+npm run build
+```
+
+`npm run preview` serves the production build.
+
+## Deploy config already in the repo
+
+`package.json` has `predeploy` and `deploy` scripts. `npm run deploy` publishes the `dist/` folder with the `gh-pages` package. A `gh-pages` branch already exists on the remote. This repository has no GitHub Actions workflow, and no Vercel or Netlify config. Deployment was not set up or run as part of the content update.
