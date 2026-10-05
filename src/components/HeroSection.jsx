@@ -13,32 +13,32 @@ const HeroSection = () => {
           
           <h1 className="name">Sphamandla Lawrence Tshabalala</h1>
           <h2 className="role">
-            <span className="role-gradient">Cybersecurity Specialist</span> &amp; Full-Stack Engineer
+            <span className="role-gradient">Junior DevSecOps Engineer</span> &amp; Cybersecurity Analyst
           </h2>
           
           <p className="bio">
-            I engineer production full-stack systems, automated cybersecurity reconnaissance engines, 
-            and resilient Linux cloud infrastructure. With 12+ industry certifications and battle-tested 
-            open-source projects spanning DevSecOps, Python threat automation, TypeScript web applications, 
-            and low-level C architecture, I build secure, high-performance software.
+            Based in South Africa and open to junior DevSecOps and cybersecurity roles.
+            The project section links to a personal pipeline lab, a Python recon tool,
+            TypeScript web apps, and ALX C exercises. CompTIA Security+ (ce) is the
+            exam certificate; the other files in the certificates section are course completions.
           </p>
 
           <div className="hero-stats-grid">
             <div className="stat-card glass">
-              <span className="stat-num">12+</span>
-              <span className="stat-label">Verified Certifications</span>
+              <span className="stat-num">12</span>
+              <span className="stat-label">Certificates Listed</span>
             </div>
             <div className="stat-card glass">
               <span className="stat-num">CompTIA</span>
               <span className="stat-label">Security+ ce Certified</span>
             </div>
             <div className="stat-card glass">
-              <span className="stat-num">6+</span>
-              <span className="stat-label">Engineering Projects</span>
+              <span className="stat-num">5</span>
+              <span className="stat-label">Repos Linked Below</span>
             </div>
             <div className="stat-card glass">
-              <span className="stat-num">Full-Stack</span>
-              <span className="stat-label">&amp; DevSecOps Core</span>
+              <span className="stat-num">Lab</span>
+              <span className="stat-label">DevSecOps Pipeline</span>
             </div>
           </div>
 

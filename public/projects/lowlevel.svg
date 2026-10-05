@@ -28,18 +28,17 @@
     <circle cx="16" cy="12" r="4" fill="#ef4444" />
     <circle cx="28" cy="12" r="4" fill="#f59e0b" />
     <circle cx="40" cy="12" r="4" fill="#10b981" />
-    <text x="60" y="16" fill="#a7f3d0" font-family="'Courier New', monospace" font-size="11" font-weight="600">posix_shell.c (x86_64 / C99)</text>
+    <text x="60" y="16" fill="#a7f3d0" font-family="'Courier New', monospace" font-size="11" font-weight="600">alx-low_level_programming</text>
 
-    <!-- Code Snippet -->
-    <text x="18" y="48" fill="#6ee7b7" font-family="'Courier New', monospace" font-size="12">0x7ffd9a: char **tokens = split_line(buf);</text>
-    <text x="18" y="68" fill="#34d399" font-family="'Courier New', monospace" font-size="12">0x7ffdba: pid = fork();</text>
-    <text x="18" y="88" fill="#10b981" font-family="'Courier New', monospace" font-size="12">0x7ffdca: if (pid == 0) execve(path, args);</text>
-    <text x="18" y="108" fill="#059669" font-family="'Courier New', monospace" font-size="12">0x7ffdda: waitpid(pid, &amp;status, 0);</text>
-    <text x="18" y="128" fill="#10b981" font-family="'Courier New', monospace" font-size="12">0x7ffdea: free_heap_ptrs(tokens); /* 0 leaks */</text>
+    <text x="18" y="48" fill="#6ee7b7" font-family="'Courier New', monospace" font-size="12">pointers, arrays, recursion</text>
+    <text x="18" y="68" fill="#34d399" font-family="'Courier New', monospace" font-size="12">malloc, structs, function pointers</text>
+    <text x="18" y="88" fill="#10b981" font-family="'Courier New', monospace" font-size="12">linked lists, bit manipulation</text>
+    <text x="18" y="108" fill="#059669" font-family="'Courier New', monospace" font-size="12">file I/O, static and dynamic libs</text>
+    <text x="18" y="128" fill="#10b981" font-family="'Courier New', monospace" font-size="12">directories 0x00 through 0x18</text>
   </g>
   <!-- Memory Safe Badge -->
   <g transform="translate(20, 20)">
     <rect width="140" height="24" rx="6" fill="rgba(16, 185, 129, 0.12)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1"/>
-    <text x="10" y="16" fill="#34d399" font-family="'Inter', monospace" font-size="11" font-weight="600">VALGRIND CLEAN • C99</text>
+    <text x="10" y="16" fill="#34d399" font-family="'Inter', monospace" font-size="11" font-weight="600">ALX C EXERCISES</text>
   </g>
 </svg>

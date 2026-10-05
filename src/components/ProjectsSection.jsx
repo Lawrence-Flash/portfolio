@@ -5,126 +5,105 @@ const baseUrl = import.meta.env.BASE_URL;
 
 const projectData = [
   {
-    id: 'ai-assistant',
-    title: 'AI Assistant — Enterprise Recon & Hardening Engine',
-    category: 'Cybersecurity & AI',
-    filterKey: 'cybersecurity',
-    status: 'Flagship Platform',
+    id: 'devsecops-pipeline',
+    title: 'DevSecOps Pipeline Lab',
+    category: 'DevSecOps',
+    filterKey: 'devsecops',
+    status: 'Personal Lab',
     statusClass: 'status-featured',
-    image: `${baseUrl}projects/ai-assistant.png`,
-    summary: 'A dual-interface (Cyber Dashboard & Rich CLI) intelligence engine designed to automate enterprise target recon, SSL audits, SPF/DMARC anti-spoofing rating, and firewall hardening.',
+    image: `${baseUrl}projects/devsecops.svg`,
+    summary: 'Personal lab project, not a client or production system. A FastAPI tickets API is built and scanned on GitHub Actions. Terraform then creates a local kind cluster and installs Kyverno plus a hardened Helm chart.',
     highlights: [
-      'Multi-profile Nmap scanner: Fast Recon (-F), Deep Service/OS (-sV -O), Web Audits, and 65,535-port sweep.',
-      'Automated SPF & DMARC analyzer parsing policy strictness and grading domain spoofing vulnerability.',
-      'Deep SSL/TLS inspector with SNI verification, cipher suite audit, and certificate expiry countdown.',
-      'Automated Hardening Script Generator: Instantly emits custom Bash (UFW/sysctl) or PowerShell firewall rules.',
-      'Dual interface: Real-time glassmorphism web dashboard + interactive Python CLI + Android companion app.'
+      'FastAPI tickets API with API-key auth, Pydantic validation, SQLite, and pytest. The multi-stage image runs as uid 10001, drops all capabilities, and uses a read-only root filesystem.',
+      'GitHub Actions security gate on every pull request: Gitleaks, Semgrep, CodeQL, Trivy filesystem and image scans, a CycloneDX SBOM, Kyverno policy-as-code on the Helm chart, Terraform fmt/validate, and an OWASP ZAP baseline. Dependabot opens weekly update PRs.',
+      'Local apply (not CI) uses Terraform to create the kind cluster, install Kyverno, and deploy the chart with resource limits, a NetworkPolicy, and a namespace labelled Pod Security restricted. CI validates Terraform and does not start the cluster.',
+      'Demo pull request #2 adds a synthetic GitHub token so Gitleaks and the Trivy filesystem secret scan fail. That pull request is not meant to be merged.'
     ],
-    tech: ['Python', 'Flask', 'Nmap', 'SQLite', 'DNS/Crypto', 'Kotlin (Android)', 'PowerShell', 'Bash'],
+    tech: ['GitHub Actions', 'Docker', 'Kubernetes', 'Terraform', 'Helm', 'Kyverno', 'Trivy', 'Semgrep', 'CodeQL', 'OWASP ZAP', 'Python', 'FastAPI'],
+    githubUrl: 'https://github.com/Lawrence-Flash/devsecops-pipeline-showcase',
+    badge: 'Personal Lab Project'
+  },
+  {
+    id: 'stokvel-collective',
+    title: 'Stokvel Collective — Bulk-Buying Platform',
+    category: 'Full-Stack Web',
+    filterKey: 'fullstack',
+    status: 'Personal Project',
+    statusClass: 'status-production',
+    image: `${baseUrl}projects/stokvel.svg`,
+    summary: 'Personal project: a TypeScript monorepo for a South African stokvel bulk-buying app, with a Next.js storefront, an Express API, PostgreSQL, and Redis.',
+    highlights: [
+      'pnpm workspace with Next.js 14 and Tailwind, Express, Prisma, Zod, PostgreSQL 16, Redis 7, and a BullMQ worker.',
+      'Phone OTP login exchanged for a JWT, Zod validation, and rate limiting on the OTP route. The repo includes .env.example and does not commit a .env file.',
+      'Multi-stage Dockerfile for the API and docker-compose for PostgreSQL, Redis, and Adminer. Vitest covers pool logic.',
+      'GitHub Actions runs a frozen-lockfile install, lint, typecheck, and build. That workflow does not run pnpm test.'
+    ],
+    tech: ['TypeScript', 'Next.js', 'Express', 'Prisma', 'PostgreSQL', 'Redis', 'Docker', 'GitHub Actions'],
+    githubUrl: 'https://github.com/Lawrence-Flash/-Stokvel-Collective',
+    badge: 'TypeScript Monorepo'
+  },
+  {
+    id: 'ai-assistant',
+    title: 'AI Assistant — Recon, OSINT & Hardening',
+    category: 'Cybersecurity',
+    filterKey: 'cybersecurity',
+    status: 'Security Tool',
+    statusClass: 'status-research',
+    image: `${baseUrl}projects/ai-assistant.png`,
+    summary: 'Python security tool with a Flask dashboard, a Rich CLI, and a small Kotlin Android client. It runs Nmap, inspects TLS and email authentication, grades HTTP headers, and can send the scan text to Gemini.',
+    highlights: [
+      'Nmap profiles in utils.py: fast (-F), service and OS detection (-sV -O when root), web scripts, and an all-ports sweep (-p-). Targets are checked before the scan, and Nmap is started with an argument list.',
+      'DNS and OSINT helpers, SPF/DMARC grading, TLS inspection with SNI, HTTP security-header checks, and subdomain enumeration.',
+      'With GEMINI_API_KEY set, generate_hardening_script asks Gemini for a Bash or PowerShell script from the scan text. Without a key it returns a short static UFW example. send_webhook_alert can POST to a Discord or Slack URL. tests/test_suite.py defines 13 unittest methods.'
+    ],
+    tech: ['Python', 'Flask', 'Nmap', 'SQLite', 'Gemini', 'Kotlin', 'Bash', 'PowerShell'],
     githubUrl: 'https://github.com/Lawrence-Flash/AI_Assistant',
-    badge: 'Enterprise SecOps'
+    badge: 'Python Security Tool'
   },
   {
     id: 'dealhunter-smart',
-    title: 'DealHunterSmart — Multi-Retailer Price Platform',
+    title: 'DealHunterSmart — Seeded SA Price Comparison',
     category: 'Full-Stack Web',
     filterKey: 'fullstack',
-    status: 'Production Full-Stack',
+    status: 'Phase 1 Demo',
     statusClass: 'status-production',
     image: `${baseUrl}projects/dealhunter.png`,
-    summary: "South Africa's smart grocery and price comparison platform engineered to beat inflation by aggregating real-time prices across 8+ major national retailers.",
+    summary: 'TypeScript app that compares a seeded catalog of South African grocery and retail products. Loyalty prices and delivery labels are fields on that sample data. The README still lists live scraping and a model-backed assistant as later phases.',
     highlights: [
-      'Multi-store price aggregator across Checkers Sixty60, Pick n Pay, Takealot, Amazon.co.za, Woolworths, Clicks, and Makro.',
-      'Cardholder & Loyalty dual-pricing factoring in Xtra Savings, Smart Shopper, WRewards, and ClubCard discounts.',
-      'Smart Multi-Store Basket Optimizer: Dynamically splits shopping lists across stores to maximize savings (up to 35%).',
-      'Delivery logistics awareness: Compares 60-minute on-demand delivery fees against standard parcel shipping.',
-      'Full-stack architecture: React 18, TanStack Query, Express.js API, PostgreSQL with Drizzle ORM, and shadcn/ui.'
+      'React 18, Vite, Wouter, TanStack Query, Tailwind, shadcn/ui, Express, Drizzle ORM, and PostgreSQL with an in-memory fallback.',
+      'Sample products carry prices for retailers including Checkers Sixty60, Pick n Pay, Takealot, Amazon.co.za, Woolworths, Clicks, Makro, and Dis-Chem, plus loyalty-price and delivery-speed fields.',
+      'The /api/ai/chat route matches keywords against the seeded catalog. It does not call Gemini or another model. The live-sync route applies a small random change to stored prices and does not download retailer pages.'
     ],
-    tech: ['React 18', 'TypeScript', 'Vite', 'Express.js', 'PostgreSQL', 'Drizzle ORM', 'Tailwind CSS', 'Radix UI'],
+    tech: ['React 18', 'TypeScript', 'Vite', 'Express', 'PostgreSQL', 'Drizzle ORM', 'Tailwind CSS', 'Radix UI'],
     githubUrl: 'https://github.com/Lawrence-Flash/DealHunterSmart',
-    badge: 'Full-Stack FinTech'
-  },
-  {
-    id: 'spacecraft-security',
-    title: 'Spacecraft & Satellite Cybersecurity Labs',
-    category: 'Aerospace & Research',
-    filterKey: 'research',
-    status: 'Security Research',
-    statusClass: 'status-research',
-    image: `${baseUrl}projects/spacecrafthacking.svg`,
-    summary: 'Applied aerospace and satellite communications cybersecurity research covering ground segment protocol exploitation, Mission Control Systems (MCS), and SATCOM terminal attack vectors.',
-    highlights: [
-      'Ground Segment Protocol Security: Vulnerability modeling of CCSDS telemetry and telecommand transmission frames.',
-      'Mission Control Systems (MCS): Architectural threat analysis of space-ground communications and orbital commands.',
-      'SATCOM Terminal Security: Penetration testing methodology and embedded firmware vulnerability assessments.',
-      'GNSS Jamming & Spoofing: Simulated GPS/Galileo navigation signal spoofing attacks and defense countermeasure design.'
-    ],
-    tech: ['SATCOM', 'CCSDS Protocols', 'SDR', 'Linux Security', 'Protocol Analysis', 'Cryptography'],
-    githubUrl: 'https://github.com/spacecrafthacking/spacecrafthacking',
-    badge: 'Aerospace Sec'
-  },
-  {
-    id: 'ai-cyber-defense',
-    title: 'AI Threat Detection & Log Anomaly Engine',
-    category: 'Cybersecurity & AI',
-    filterKey: 'cybersecurity',
-    status: 'AI Security Tool',
-    statusClass: 'status-featured',
-    image: `${baseUrl}projects/threatdetection.svg`,
-    summary: 'Automated threat detection and network intrusion monitoring suite leveraging machine learning models to classify malicious traffic patterns and anomalous activity.',
-    highlights: [
-      'Network Log Ingestion: Ingests multi-source network telemetry and normalizes firewall/router events in real time.',
-      'Machine Learning Classifier: Trained models distinguish between normal network behavior and malicious payload attempts.',
-      'Automated Incident Contextualization: Generates severity rankings, threat indicators, and rapid triage advisories.'
-    ],
-    tech: ['Python', 'Scikit-Learn', 'TensorFlow', 'Network Analytics', 'Pandas', 'Security ML'],
-    githubUrl: 'https://github.com/Lawrence-Flash/AI-Cybersecurity-Assistant',
-    badge: 'ML Defense'
+    badge: 'Seeded Catalog Demo'
   },
   {
     id: 'lowlevel-c',
-    title: 'Unix Architecture & Custom POSIX Shell',
-    category: 'Systems & DevOps',
+    title: 'ALX Low-Level Programming in C',
+    category: 'Systems & C',
     filterKey: 'systems',
-    status: 'Systems Architecture',
+    status: 'Coursework',
     statusClass: 'status-systems',
     image: `${baseUrl}projects/lowlevel.svg`,
-    summary: 'Foundational systems engineering in C demonstrating low-level Unix memory management, system calls, custom data structures, and POSIX command parsing.',
+    summary: 'ALX C exercises from hello world through dynamic libraries: pointers, allocation, structs, linked lists, bit manipulation, and file I/O.',
     highlights: [
-      'Custom POSIX Shell: Implemented complete command interpreter with process control (fork, execve), signal handling, and PATH resolution.',
-      'Leak-Free Memory Safety: Rigorous dynamic memory allocation verified using Valgrind with zero memory leaks.',
-      'Custom printf Library: Re-engineered libc formatted output engine from scratch handling conversion specifiers.'
+      'Pointers, arrays, strings, recursion, argc/argv, and the preprocessor.',
+      'malloc and free, structs, function pointers, variadic functions, and static and dynamic libraries.',
+      'Singly and doubly linked lists, bit manipulation, and file I/O. The directories in the repo run from 0x00-hello_world through 0x18-dynamic_libraries.'
     ],
-    tech: ['C (C99)', 'POSIX API', 'Linux Syscalls', 'Valgrind', 'GDB', 'Data Structures'],
+    tech: ['C', 'Pointers', 'malloc', 'Linked Lists', 'File I/O', 'Bit Manipulation'],
     githubUrl: 'https://github.com/Lawrence-Flash/alx-low_level_programming',
-    badge: 'C / Memory Architecture'
-  },
-  {
-    id: 'devops-automation',
-    title: 'Linux Infrastructure & DevOps Automation',
-    category: 'Systems & DevOps',
-    filterKey: 'systems',
-    status: 'Infrastructure',
-    statusClass: 'status-systems',
-    image: `${baseUrl}projects/devops.svg`,
-    summary: 'Production server orchestration, high-availability reverse proxy deployment, automated Bash provisioning, and security hardening.',
-    highlights: [
-      'Idempotent Shell Provisioning: Automated scripts for zero-downtime server setups, user privilege lockdown, and SSH key hardening.',
-      'High-Availability Web Architecture: Configured Nginx web servers and HAProxy load balancers with SSL/TLS termination.',
-      'Network Diagnostics & Monitoring: Automated health check pipelines using Linux networking tools (ss, iptables, curl, crontab).'
-    ],
-    tech: ['Bash', 'Linux (Ubuntu/RHEL)', 'Nginx', 'HAProxy', 'SSH Hardening', 'DevOps'],
-    githubUrl: 'https://github.com/Lawrence-Flash/learning-linux-command-line',
-    badge: 'DevOps & SysAdmin'
+    badge: 'C Coursework'
   }
 ];
 
 const categories = [
   { label: 'All Projects', value: 'all' },
-  { label: 'Cybersecurity & AI', value: 'cybersecurity' },
+  { label: 'DevSecOps', value: 'devsecops' },
+  { label: 'Cybersecurity', value: 'cybersecurity' },
   { label: 'Full-Stack Web', value: 'fullstack' },
-  { label: 'Systems & DevOps', value: 'systems' },
-  { label: 'Aerospace & Research', value: 'research' }
+  { label: 'Systems & C', value: 'systems' }
 ];
 
 const ProjectsSection = () => {
@@ -143,11 +122,12 @@ const ProjectsSection = () => {
     <section id="projects" className="projects-section">
       <div className="container">
         <div className="section-header">
-          <div className="section-eyebrow">Enterprise &amp; Open-Source Portfolio</div>
-          <h2 className="section-title">Featured Engineering Projects</h2>
+          <div className="section-eyebrow">Open-Source Portfolio</div>
+          <h2 className="section-title">Featured Projects</h2>
           <p className="section-subtitle">
-            A curated showcase of production full-stack systems, automated cybersecurity engines, 
-            aerospace security research, and low-level Unix architecture.
+            Public repositories only. The first card is a personal DevSecOps lab.
+            The others are a stokvel bulk-buying app, a Python recon tool, a seeded
+            price-comparison demo, and ALX C exercises.
           </p>
         </div>
 
@@ -268,10 +248,11 @@ const ProjectsSection = () => {
             </svg>
           </div>
           <div className="collab-text">
-            <h4>Collaborative &amp; Team Engineering</h4>
+            <h4>Other public repositories</h4>
             <p>
-              Also actively contributing to production platforms with the <strong>Ground-Up Grinders</strong> organization, 
-              including <strong>RoomLinkSA</strong> (accommodation matching), <strong>Gav-Marketplace</strong>, and <strong>Bizbook</strong>.
+              Also on GitHub: <strong>alx-system_engineering-devops</strong> (shell basics, permissions, redirections, and variables)
+              and the group repo <strong>printf</strong> (branch <strong>our_printf_branch</strong>; <strong>_printf</strong> handles <strong>%c</strong>, <strong>%s</strong>, <strong>%%</strong>, <strong>%d</strong>/<strong>%i</strong>, and <strong>%b</strong>).
+              <strong>AI-Cybersecurity-Assistant</strong> is an earlier one-file voice and text Nmap script (<strong>assistant.py</strong>).
             </p>
           </div>
           <a 

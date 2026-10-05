@@ -12,8 +12,8 @@ const Footer = () => {
               <span className="footer-logo-tag">&lt;SecDev/&gt;</span>
             </div>
             <p className="footer-bio">
-              Cybersecurity Specialist &amp; Full-Stack Engineer focused on automated threat intelligence,
-              high-throughput web platforms, and resilient system architecture.
+              Junior DevSecOps engineer and cybersecurity analyst. This site links to public
+              GitHub repositories and to course certificates, including CompTIA Security+ (ce).
             </p>
           </div>
 
