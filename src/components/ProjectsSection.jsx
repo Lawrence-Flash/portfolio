@@ -14,7 +14,7 @@ const projectData = [
     image: `${baseUrl}projects/devsecops.svg`,
     summary: 'Personal lab project, not a client or production system. A FastAPI tickets API is built and scanned on GitHub Actions. Terraform then creates a local kind cluster and installs Kyverno plus a hardened Helm chart.',
     highlights: [
-      'FastAPI tickets API with API-key auth, Pydantic validation, SQLite, and pytest. The multi-stage image runs as uid 10001, drops all capabilities, and uses a read-only root filesystem.',
+      'FastAPI tickets API with API-key auth, Pydantic validation, SQLite, and pytest. The multi-stage image runs as uid 10001. The Helm chart and the CI container drop all capabilities and use a read-only root filesystem.',
       'GitHub Actions security gate on every pull request: Gitleaks, Semgrep, CodeQL, Trivy filesystem and image scans, a CycloneDX SBOM, Kyverno policy-as-code on the Helm chart, Terraform fmt/validate, and an OWASP ZAP baseline. Dependabot opens weekly update PRs.',
       'Local apply (not CI) uses Terraform to create the kind cluster, install Kyverno, and deploy the chart with resource limits, a NetworkPolicy, and a namespace labelled Pod Security restricted. CI validates Terraform and does not start the cluster.',
       'Demo pull request #2 adds a synthetic GitHub token so Gitleaks and the Trivy filesystem secret scan fail. That pull request is not meant to be merged.'
@@ -34,7 +34,7 @@ const projectData = [
     summary: 'Personal project: a TypeScript monorepo for a South African stokvel bulk-buying app, with a Next.js storefront, an Express API, PostgreSQL, and Redis.',
     highlights: [
       'pnpm workspace with Next.js 14 and Tailwind, Express, Prisma, Zod, PostgreSQL 16, Redis 7, and a BullMQ worker.',
-      'Phone OTP login exchanged for a JWT, Zod validation, and rate limiting on the OTP route. The repo includes .env.example and does not commit a .env file.',
+      'A six-digit code is stored in Redis for five minutes and exchanged for a seven-day JWT. The code is printed for local development and returned when NODE_ENV is unset or development; the repo does not call an SMS provider. Zod validates the OTP routes, and that request route allows 5 calls per 15 minutes. .env.example is committed and .env is gitignored.',
       'Multi-stage Dockerfile for the API and docker-compose for PostgreSQL, Redis, and Adminer. Vitest covers pool logic.',
       'GitHub Actions runs a frozen-lockfile install, lint, typecheck, and build. That workflow does not run pnpm test.'
     ],
@@ -54,7 +54,7 @@ const projectData = [
     highlights: [
       'Nmap profiles in utils.py: fast (-F), service and OS detection (-sV -O when root), web scripts, and an all-ports sweep (-p-). Targets are checked before the scan, and Nmap is started with an argument list.',
       'DNS and OSINT helpers, SPF/DMARC grading, TLS inspection with SNI, HTTP security-header checks, and subdomain enumeration.',
-      'With GEMINI_API_KEY set, generate_hardening_script asks Gemini for a Bash or PowerShell script from the scan text. Without a key it returns a short static UFW example. send_webhook_alert can POST to a Discord or Slack URL. tests/test_suite.py defines 13 unittest methods.'
+      'With GEMINI_API_KEY set, generate_hardening_script asks Gemini for a Bash or PowerShell script from the scan text. Without a key it returns a short static UFW example. send_webhook_alert POSTs a Discord embed payload to the configured webhook URL. tests/test_suite.py defines 13 unittest methods.'
     ],
     tech: ['Python', 'Flask', 'Nmap', 'SQLite', 'Gemini', 'Kotlin', 'Bash', 'PowerShell'],
     githubUrl: 'https://github.com/Lawrence-Flash/AI_Assistant',
@@ -70,11 +70,11 @@ const projectData = [
     image: `${baseUrl}projects/dealhunter.png`,
     summary: 'TypeScript app that compares a seeded catalog of South African grocery and retail products. Loyalty prices and delivery labels are fields on that sample data. The README still lists live scraping and a model-backed assistant as later phases.',
     highlights: [
-      'React 18, Vite, Wouter, TanStack Query, Tailwind, shadcn/ui, Express, Drizzle ORM, and PostgreSQL with an in-memory fallback.',
+      'React 18, Vite, Wouter, TanStack Query, Tailwind, shadcn/ui, and Express. The API serves the catalog from in-memory maps in server/storage.ts. shared/schema.ts declares Drizzle PostgreSQL tables, and the server never opens a database connection.',
       'Sample products carry prices for retailers including Checkers Sixty60, Pick n Pay, Takealot, Amazon.co.za, Woolworths, Clicks, Makro, and Dis-Chem, plus loyalty-price and delivery-speed fields.',
       'The /api/ai/chat route matches keywords against the seeded catalog. It does not call Gemini or another model. The live-sync route applies a small random change to stored prices and does not download retailer pages.'
     ],
-    tech: ['React 18', 'TypeScript', 'Vite', 'Express', 'PostgreSQL', 'Drizzle ORM', 'Tailwind CSS', 'Radix UI'],
+    tech: ['React 18', 'TypeScript', 'Vite', 'Express', 'Tailwind CSS', 'Radix UI'],
     githubUrl: 'https://github.com/Lawrence-Flash/DealHunterSmart',
     badge: 'Seeded Catalog Demo'
   },
@@ -86,11 +86,11 @@ const projectData = [
     status: 'Coursework',
     statusClass: 'status-systems',
     image: `${baseUrl}projects/lowlevel.svg`,
-    summary: 'ALX C exercises from hello world through dynamic libraries: pointers, allocation, structs, linked lists, bit manipulation, and file I/O.',
+    summary: 'ALX C coursework in this repository: hello world, pointers, allocation, structs, linked lists, bit manipulation, file I/O, and dynamic libraries.',
     highlights: [
       'Pointers, arrays, strings, recursion, argc/argv, and the preprocessor.',
       'malloc and free, structs, function pointers, variadic functions, and static and dynamic libraries.',
-      'Singly and doubly linked lists, bit manipulation, and file I/O. The directories in the repo run from 0x00-hello_world through 0x18-dynamic_libraries.'
+      'Singly and doubly linked lists, bit manipulation, and file I/O. The folders present are 0x00 through 0x10, 0x12 through 0x15, 0x17-doubly_linked_lists, and 0x18-dynamic_libraries.',
     ],
     tech: ['C', 'Pointers', 'malloc', 'Linked Lists', 'File I/O', 'Bit Manipulation'],
     githubUrl: 'https://github.com/Lawrence-Flash/alx-low_level_programming',
@@ -251,8 +251,8 @@ const ProjectsSection = () => {
             <h4>Other public repositories</h4>
             <p>
               Also on GitHub: <strong>alx-system_engineering-devops</strong> (shell basics, permissions, redirections, and variables)
-              and the group repo <strong>printf</strong> (branch <strong>our_printf_branch</strong>; <strong>_printf</strong> handles <strong>%c</strong>, <strong>%s</strong>, <strong>%%</strong>, <strong>%d</strong>/<strong>%i</strong>, and <strong>%b</strong>).
-              <strong>AI-Cybersecurity-Assistant</strong> is an earlier one-file voice and text Nmap script (<strong>assistant.py</strong>).
+              and the group repo <strong>printf</strong> (branch <strong>our_printf_branch</strong>; <strong>_printf</strong> handles <strong>%c</strong>, <strong>%s</strong>, <strong>%%</strong>, <strong>%d</strong>/<strong>%i</strong>, <strong>%b</strong>, and <strong>%S</strong>).
+              <strong>AI-Cybersecurity-Assistant</strong> is an earlier one-file voice and text Nmap script (<strong>assistant.py</strong>, fast scan with <strong>-F</strong>).
             </p>
           </div>
           <a 
