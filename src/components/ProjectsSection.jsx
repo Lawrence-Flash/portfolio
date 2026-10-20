@@ -251,7 +251,7 @@ const ProjectsSection = () => {
             <h4>Other public repositories</h4>
             <p>
               Also on GitHub: <strong>alx-system_engineering-devops</strong> (shell basics, permissions, redirections, and variables)
-              and the group repo <strong>printf</strong> (branch <strong>our_printf_branch</strong>; <strong>_printf</strong> handles <strong>%c</strong>, <strong>%s</strong>, <strong>%%</strong>, <strong>%d</strong>/<strong>%i</strong>, <strong>%b</strong>, and <strong>%S</strong>).
+              and the group repo <strong>printf</strong> (branch <strong>our_printf_branch</strong>; <strong>_printf</strong> handles <strong>%c</strong>, <strong>%s</strong>, <strong>%%</strong>, <strong>%d</strong>/<strong>%i</strong>, <strong>%b</strong>, and <strong>%S</strong>).{' '}
               <strong>AI-Cybersecurity-Assistant</strong> is an earlier one-file voice and text Nmap script (<strong>assistant.py</strong>, fast scan with <strong>-F</strong>).
             </p>
           </div>
