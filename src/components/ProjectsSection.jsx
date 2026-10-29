@@ -24,6 +24,78 @@ const projectData = [
     badge: 'Personal Lab Project'
   },
   {
+    id: 'soc-log-analyser',
+    title: 'SOC Log Analyser — Offline Log Triage',
+    category: 'Cybersecurity',
+    filterKey: 'cybersecurity',
+    status: 'Security Tool',
+    statusClass: 'status-research',
+    image: `${baseUrl}projects/soc-log-analyser.svg`,
+    summary: 'Offline Python CLI, standard library only, that triages one Linux auth log, one Apache or Nginx combined access log, or one Windows Security export (JSON or CSV). Alerts are mapped to MITRE ATT&CK. It does not call the network and it is not a SIEM.',
+    highlights: [
+      'python3 -m soclog demo runs the four synthetic files in samples/. The command exits 1 when alerts meet the minimum severity; the report checked into docs/example-report.md lists 24 alerts on those files. analyse accepts --format auto, linux-auth, web-access, windows-json, or windows-csv, and can print JSON or Markdown.',
+      'soclog/rules.json has 19 rules: brute force (T1110.001), password spraying (T1110.003), a success after those failures, unusual-hours logons between 22:00 and 05:00 UTC (T1078), account creation and privileged group changes, command lines such as encoded PowerShell and curl or wget into a shell or /tmp, and regex checks for SQL injection, path traversal, XSS, scanner user agents, and 404 bursts.',
+      'tests/ defines 35 unittest methods. GitHub Actions runs them on Python 3.10, 3.11, and 3.12, then runs the demo. A separate CodeQL workflow analyses the Python.'
+    ],
+    tech: ['Python', 'MITRE ATT&CK', 'unittest', 'GitHub Actions', 'CodeQL'],
+    githubUrl: 'https://github.com/Lawrence-Flash/soc-log-analyser',
+    badge: 'Standard-Library CLI'
+  },
+  {
+    id: 'detection-rules-lab',
+    title: 'Detection Rules Lab — Sigma as Code',
+    category: 'Cybersecurity',
+    filterKey: 'cybersecurity',
+    status: 'Personal Lab',
+    statusClass: 'status-featured',
+    image: `${baseUrl}projects/detection-rules.svg`,
+    summary: 'Sigma detection-as-code lab: 19 rules (7 Linux, 9 Windows, 3 web), each with synthetic events that should fire and events that should not. A standard-library tool validates the rules, runs the corpus, and writes an ATT&CK coverage table.',
+    highlights: [
+      'python3 -m rulelab validate, test, and coverage do not install packages or open a network connection. coverage writes docs/coverage.md. The committed table says 19 rules reference 17 techniques across 10 of 15 enterprise tactics.',
+      'tests/data holds 61 synthetic events: 23 in the positive JSON files (each must match) and 38 in the negative JSON files (each must not). tests/ defines 20 unittest methods.',
+      'GitHub Actions runs the unit tests, validate, and test on Python 3.10, 3.11, and 3.12. A second job installs sigma-cli and pySigma, runs sigma check --fail-on-issues, and checks that python3 -m rulelab convert still matches the Splunk SPL and Elasticsearch Lucene files under examples/. CodeQL analyses the Python.'
+    ],
+    tech: ['Sigma', 'Python', 'pySigma', 'Splunk', 'Elasticsearch', 'MITRE ATT&CK', 'GitHub Actions', 'CodeQL'],
+    githubUrl: 'https://github.com/Lawrence-Flash/detection-rules-lab',
+    badge: 'Detection as Code'
+  },
+  {
+    id: 'cloud-misconfig-lab',
+    title: 'Cloud Misconfig Lab — Terraform AWS',
+    category: 'DevSecOps',
+    filterKey: 'devsecops',
+    status: 'Personal Lab',
+    statusClass: 'status-featured',
+    image: `${baseUrl}projects/cloud-misconfig.svg`,
+    summary: 'Terraform lab with the same small AWS layout twice: vulnerable/ plants misconfigurations and fixed/ corrects them. Checkov and Trivy scan both copies. Nothing is deployed, there is no terraform apply, and no cloud account is required.',
+    highlights: [
+      'Committed JSON from Checkov 3.2.449 and Trivy 0.76.1: Trivy reports 27 failed checks on vulnerable/ (1 critical, 16 high, 6 medium, 4 low) and 0 on fixed/. Checkov reports 57 failed checks on vulnerable/ and 10 on fixed/. Checkov left severity null, so those rows are unscored. The 10 that remain are not labeled critical or high.',
+      'Those 10 Checkov checks are cross-region replication and event notifications on the three buckets, a CloudTrail SNS topic, and the KMS key policy. They are not hidden with skip comments. python3 -m misconfig report rebuilds docs/scan-summary.md from the JSON. tests/ defines 26 unittest methods.',
+      'CI runs terraform fmt, init -backend=false, and validate on both folders, then Checkov and Trivy. The gate requires findings on vulnerable/ and fails fixed/ only for critical or high. The same workflow runs gitleaks 8.24.2 and CodeQL for Python. The planted secret is allowlisted only by a gitleaks:allow comment on its line. The region af-south-1 is a configuration value; validate does not call AWS.'
+    ],
+    tech: ['Terraform', 'AWS', 'Checkov', 'Trivy', 'gitleaks', 'CodeQL', 'Python', 'GitHub Actions'],
+    githubUrl: 'https://github.com/Lawrence-Flash/cloud-misconfig-lab',
+    badge: 'Not Deployed'
+  },
+  {
+    id: 'phishing-email-analyser',
+    title: 'Phishing Email Analyser — Offline .eml Scoring',
+    category: 'Cybersecurity',
+    filterKey: 'cybersecurity',
+    status: 'Security Tool',
+    statusClass: 'status-research',
+    image: `${baseUrl}projects/phishcheck.svg`,
+    summary: 'Offline Python CLI (python3 -m phishcheck) that scores a saved .eml file from 0 to 100 and explains each signal. It quotes SPF, DKIM, and DMARC results from the headers, checks lookalike domains, links, and attachments, and can export defanged IOCs as JSON or CSV. It does not claim a detection rate.',
+    highlights: [
+      'python3 -m phishcheck demo scores the eight synthetic samples in samples/. Bands are 0-24 likely safe, 25-59 suspicious, and 60-100 likely phishing. The score is a checklist capped at 100, not a probability. The tool uses the standard library and stays offline unless --dns is passed. A DNS lookup does not change the score.',
+      'Signals cover From against Reply-To and Return-Path, display-name spoofing, Authentication-Results and Received-SPF (quoted, not re-verified), lookalike domains for the brands in phishcheck/brands.py (South African banks, SARS, and others), link mismatches, and attachment names, types, and SHA-256. --ioc-json and --ioc-csv defang URLs and domains with hxxp and [.].',
+      'tests/ defines 102 unittest methods. GitHub Actions runs them on Python 3.10, 3.11, and 3.12, then runs the demo. Separate workflows run CodeQL on the Python and gitleaks on the git history.'
+    ],
+    tech: ['Python', 'SPF', 'DKIM', 'DMARC', 'unittest', 'GitHub Actions', 'gitleaks', 'CodeQL'],
+    githubUrl: 'https://github.com/Lawrence-Flash/phishing-email-analyser',
+    badge: 'Standard-Library CLI'
+  },
+  {
     id: 'stokvel-collective',
     title: 'Stokvel Collective — Bulk-Buying Platform',
     category: 'Full-Stack Web',
@@ -126,7 +198,9 @@ const ProjectsSection = () => {
           <h2 className="section-title">Featured Projects</h2>
           <p className="section-subtitle">
             Public repositories only. The first card is a personal DevSecOps lab.
-            The others are a stokvel bulk-buying app, a Python recon tool, a seeded
+            Next are an offline SOC log CLI, a Sigma detection-rules lab, a Terraform
+            AWS misconfiguration lab, and an offline phishing-email scorer. The remaining
+            cards are a stokvel bulk-buying app, a Python recon tool, a seeded
             price-comparison demo, and ALX C exercises.
           </p>
         </div>

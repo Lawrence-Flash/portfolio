@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="socGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1220" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="240" rx="12" fill="url(#socGrad)" stroke="rgba(192, 132, 252, 0.35)" stroke-width="1.5"/>
+  <g transform="translate(24, 22)">
+    <rect width="168" height="24" rx="6" fill="rgba(192, 132, 252, 0.12)" stroke="rgba(192, 132, 252, 0.45)" stroke-width="1"/>
+    <text x="10" y="16" fill="#e9d5ff" font-family="ui-monospace, monospace" font-size="11" font-weight="600">SOCLOG  OFFLINE CLI</text>
+  </g>
+  <g transform="translate(28, 72)" font-family="ui-monospace, monospace" font-size="13">
+    <text x="0" y="0" fill="#e9d5ff">python3 -m soclog demo</text>
+    <text x="0" y="28" fill="#c4b5fd">Linux auth · web access</text>
+    <text x="0" y="52" fill="#c4b5fd">Windows Security JSON / CSV</text>
+    <text x="0" y="84" fill="#94a3b8">brute force · spray · ATT&amp;CK</text>
+  </g>
+</svg>

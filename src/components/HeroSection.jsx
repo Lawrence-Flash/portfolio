@@ -18,9 +18,11 @@ const HeroSection = () => {
           
           <p className="bio">
             Based in South Africa and open to junior DevSecOps and cybersecurity roles.
-            The project section links to a personal pipeline lab, a Python recon tool,
-            TypeScript web apps, and ALX C exercises. CompTIA Security+ (ce) is the
-            exam certificate; the other files in the certificates section are course completions.
+            The project section links to a personal pipeline lab, a Terraform AWS
+            misconfiguration lab, offline Python tools for SOC log triage, Sigma rules,
+            phishing-email scoring, and recon, plus TypeScript web apps and ALX C
+            exercises. CompTIA Security+ (ce) is the exam certificate; the other files
+            in the certificates section are course completions.
           </p>
 
           <div className="hero-stats-grid">
@@ -33,7 +35,7 @@ const HeroSection = () => {
               <span className="stat-label">Security+ ce Certified</span>
             </div>
             <div className="stat-card glass">
-              <span className="stat-num">5</span>
+              <span className="stat-num">9</span>
               <span className="stat-label">Repos Linked Below</span>
             </div>
             <div className="stat-card glass">
